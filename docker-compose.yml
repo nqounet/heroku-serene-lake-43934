@@ -2,7 +2,7 @@ version: "3"
 services:
     webapp:
         build: .
-        command: carton exec -- morbo myapp.pl
+        command: carmel exec morbo myapp.pl
         ports:
             - 3000:3000
         
