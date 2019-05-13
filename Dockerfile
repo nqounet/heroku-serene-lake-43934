@@ -1,11 +1,11 @@
-FROM perl:5.20.3-threaded
+FROM perl:threaded
 
 RUN useradd -m -s /bin/bash appuser \
     && cpanm Carmel --notest
 
-USER appuser
-RUN mkdir -p /home/appuser/webapp
 WORKDIR /home/appuser/webapp
+RUN chown appuser:appuser /home/appuser/webapp
+USER appuser
 
 COPY --chown=appuser:appuser webapp/cpanfile .
 RUN carmel install
